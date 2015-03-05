@@ -2,6 +2,8 @@
  * Created by pskrebnev on 05.03.2015.
  */
 
+import java.util.NoSuchElementException
+
 object InitialTask extends App {
 
   /**
@@ -23,11 +25,13 @@ object InitialTask extends App {
    * @return The sum of all elements in `xs`
    */
   def sum(xs: List[Int]): Int = {
-
-
-    var s = 0
-    xs.foreach(n => s += n)
-    s
+    if(!xs.isEmpty) {
+      var s = 0
+      xs.foreach(n => s += n)
+      s
+    } else {
+      throw new NoSuchElementException("There are no elements in List")
+    }
   }
 
   /**
@@ -43,7 +47,7 @@ object InitialTask extends App {
    * @return The largest element in `xs`
    * @throws java.util.NoSuchElementException if `xs` is an empty list
    */
-  def max(xs: List[Int]): Int = {
+/*  def max(xs: List[Int]): Int = {
     var x = 0
     val msg = "No elements in List"
     try {
@@ -55,11 +59,11 @@ object InitialTask extends App {
       }
         -1
     }
-  }
+  }*/
 
 
-
-  val ds = List()
+  val ds = List(1,2,3,4,5,6,10,8)
+//  val ds = List()
 
   println(sum(ds))
 
