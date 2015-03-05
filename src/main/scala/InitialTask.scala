@@ -12,20 +12,20 @@ object InitialTask extends App {
    * For this example assignment you can use the following methods in class
    * `List`:
    *
-   *  - `xs.isEmpty: Boolean` returns `true` if the list `xs` is empty
-   *  - `xs.head: Int` returns the head element of the list `xs`. If the list
-   *    is empty an exception is thrown
-   *  - `xs.tail: List[Int]` returns the tail of the list `xs`, i.e. the the
-   *    list `xs` without its `head` element
+   * - `xs.isEmpty: Boolean` returns `true` if the list `xs` is empty
+   * - `xs.head: Int` returns the head element of the list `xs`. If the list
+   * is empty an exception is thrown
+   * - `xs.tail: List[Int]` returns the tail of the list `xs`, i.e. the the
+   * list `xs` without its `head` element
    *
-   *  ''Hint:'' instead of writing a `for` or `while` loop, think of a recursive
-   *  solution.
+   * ''Hint:'' instead of writing a `for` or `while` loop, think of a recursive
+   * solution.
    *
    * @param xs A list of natural numbers
    * @return The sum of all elements in `xs`
    */
   def sum(xs: List[Int]): Int = {
-    if(!xs.isEmpty) {
+    if (xs.nonEmpty) {
       var s = 0
       xs.foreach(n => s += n)
       s
@@ -47,31 +47,21 @@ object InitialTask extends App {
    * @return The largest element in `xs`
    * @throws java.util.NoSuchElementException if `xs` is an empty list
    */
-/*  def max(xs: List[Int]): Int = {
-    var x = 0
-    val msg = "No elements in List"
-    try {
-      xs.foreach(n => if(n > x) x = n else n)
-      x
-    } catch {
-      case ex: java.util.NoSuchElementException => {
-        println("No elements in List")
-      }
-        -1
+  def max(xs: List[Int]): Int = {
+    if (xs.nonEmpty) {
+      var xma = 0
+      xs.foreach(n => if (n > xma) xma = n else n)
+      xma
+    } else {
+      throw new scala.NoSuchElementException("There are no elements in List")
     }
-  }*/
+  }
 
+  val ds = List(10, 1, 2, 3, 4, 5, 6, 10, 8)
+//    val ds = List()
 
-  val ds = List(1,2,3,4,5,6,10,8)
-//  val ds = List()
-
-  println(sum(ds))
-
-
-
-
-
-
+  println("The sum of all elements is " + sum(ds))
+  println("The max element in List is " + max(ds))
 
 }
 
